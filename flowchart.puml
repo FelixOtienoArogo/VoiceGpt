@@ -1,0 +1,12 @@
+@startuml
+start
+:Input Data;
+:Process 1;
+:Output 1;
+:Process 2;
+:Output 2;
+:Process 3;
+:Final Output;
+stop
+@enduml
+
