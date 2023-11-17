@@ -1,4 +1,8 @@
-Regular **Markdown** here.
+VoiceGpt is a web application that aims to add voice functionality to ChatGPT. This is supposed to simulate having a conversation with the AI.
+
+The backend is built using Python with Flask framework.
+
+**Flow Chart**
 
 <!--
 @startuml
@@ -15,4 +19,3 @@ end;
 
 ![](README.svg)
 
-Some more markdown.
