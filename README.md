@@ -13,6 +13,6 @@ stop
 @enduml
 -->
 
-![](firstDiagram.svg)
+![](README.svg)
 
 Some more markdown.
