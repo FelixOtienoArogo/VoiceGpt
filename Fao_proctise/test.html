@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+        <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+                <title>Homepage - VoiceGpt</title>
+                <meta name="description" content="VoiceGpt is a voice bot">
+                <!--link rel="icon" type="image/x-icon" href="./favicon.ico"-->
+                <!--link rel="icon" type="image/png" href="./favicon.png"-->
+		<style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #error {
+            color: red;
+            padding: 0.6rem;
+            background-color: rgb(236 157 157);
+            margin-bottom: 0.6rem;
+            display: none;
+        }
+    </style>
+        </head>
+        <body>
+		<h1> Recording the audio </h1>
+		<div id="error"></div>
+		<button id="audioRecord"> Record Audio</button>
+
+		<audio controls id="audioPlayer"></audio>
+		<script>
+			let mediaRecorder;
+			let audioChunks = [];
+			const audioElem = document.getElementById('audioRecord');
+			const audioPlayer = document.getElementById('audioPlayer');
+			const errorElem = document.getElementById('error');
+			//Declaring the MediaStreamConstraints object
+			const constraints = {
+				audio: true,
+				video: false
+			}
+			audioElem.addEventListener('click', recordAudio);
+
+			function recordAudio(){
+				//Ask the User for the access of the device microphone
+				navigator.mediaDevices.getUserMedia(constraints)
+					.then(mediaStream => {
+						mediaRecorder = new MediaRecorder(mediaStream);
+						mediaRecorder.ondataavailable = (event) => {
+							if (event.data.size > 0){
+								audioChunks.push(event.data);
+							}
+						};
+
+						mediaRecorder.onstop = () => {
+							const audioBlob = new Blob(audioChunks, { type: 'audio/wav'});
+							const audioUrl = URL.createObjectURL(audioBlob);
+							audioPlayer.src = audioUrl;
+							console.log(audioUrl);
+						};
+
+						mediaRecorder.start();
+						audioElem.disabled = true;
+
+						setTimeout(stopRecording, 10000);
+					}).catch(err => {
+						errorElem.innerHTML = err;
+						errorElem.style.display = "block";
+					});
+			}
+
+			function stopRecording(){
+				if (mediaRecorder.state === 'recording'){
+					mediaRecorder.stop();
+					audioElem.disabled = false;
+				}
+			}
+		</script>
+	</body>
+</html>
+
