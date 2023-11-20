@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+        <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+                <title>Homepage - VoiceGpt</title>
+                <meta name="description" content="VoiceGpt is a voice bot">
+                <!--link rel="icon" type="image/x-icon" href="./favicon.ico"-->
+                <!--link rel="icon" type="image/png" href="./favicon.png"-->
+		<style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #error {
+            color: red;
+            padding: 0.6rem;
+            background-color: rgb(236 157 157);
+            margin-bottom: 0.6rem;
+            display: none;
+        }
+    </style>
+        </head>
+        <body>
+		<h1> Recording the audio </h1>
+		<div id="error"></div>
+		<button id="audioRecord"> Record Audio</button>
+
+		<audio controls id="audioPlayer"></audio>
+		<script type="module" src="../static/scripts/record_audio.mjs" defer></script>
+		<script type="module" src="../static/scripts/send_audio.mjs" defer></script>
+	</body>
+</html>
+

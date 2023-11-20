@@ -1,7 +1,9 @@
 from flask import Flask
+from flask_cors import CORS
 from process_audio import process_audio
 
 app = Flask(__name__)
+CORS(app) # Enable CORS for all routes
 
 @app.route('/', strict_slashes=False)
 def home():
