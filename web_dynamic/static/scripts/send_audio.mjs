@@ -5,11 +5,12 @@ export function sendAudio(audioBlob){
 
 	const formData = new FormData();
 	formData.append('audio', audioBlob);
+	console.log(formData.get('audio'));
 
 	// Make a HTTP POST request to the API
 	fetch(endpointUrl, {
 		method: 'POST',
-		body: formData,
+		body:formData,
 	})
 	.then(response => response.json())
 	.then(data => {
