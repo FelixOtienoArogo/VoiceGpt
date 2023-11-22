@@ -25,14 +25,14 @@ export function sendAudio(audioBlob){
 		const respUrl = URL.createObjectURL(audioBlob);
 
 		//Set the audio player source to the object URL
-		audioPlay.src = respUrl;
+		//audioPlay.src = respUrl;
 
 		//wait for the Blob to load, then check the size
-		console.log(audioBlob.size)
+		//console.log(audioBlob.size)
 
 
 		//Automatically play the audio
-		audioPlay.play();
+		//audioPlay.play();
 
 	})
 	.catch(error => {

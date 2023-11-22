@@ -13,11 +13,15 @@ def process_audio():
         audio_segment = AudioSegment.from_file(audioBlob)
 
         # Save audio as MP3 file
-        audio_path = 'uploads/audio.mp3'
+        SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__)) #path of this file
+        UPLOADS_DIR = os.path.join(SCRIPT_DIR, 'uploads')
+        os.makedirs(UPLOADS_DIR, exist_ok=True)
+        audio_path = os.path.join(UPLOADS_DIR, 'audio.mp3')
         audio_segment.export(audio_path, format='mp3')
-        raw_audio_data = stream_audio()
-        return Response(raw_audio_data, content_type='audio/mpeg')
+        #raw_audio_data = stream_audio()
+        return jsonify({'status': 'success'})#Response(raw_audio_data, content_type='audio/mpeg')
 
     except Exception as e:
+        print(e)
         return jsonify({'status': 'error', 'message': str(e)})
 
