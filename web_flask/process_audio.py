@@ -3,7 +3,7 @@ from flask_cors import CORS
 from pydub import AudioSegment
 import base64
 import os
-from stream_audio import stream_audio
+from web_flask.stream_audio import stream_audio
 
 def process_audio():
     """Takes in the voice message from the frontend and process it"""
