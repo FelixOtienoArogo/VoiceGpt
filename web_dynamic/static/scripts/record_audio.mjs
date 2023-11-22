@@ -8,7 +8,9 @@ import { sendAudio } from "./send_audio.mjs"
 
 //Declaring the MediaStreamConstraints object
 const constraints = {
-	audio: true,
+	audio: {
+		mimeType: 'audio/mpeg',
+	},
         video: false
         }
 audioElem.addEventListener('click', recordAudio);
@@ -28,8 +30,8 @@ navigator.mediaDevices.getUserMedia(constraints)
                         const audioBlob = new Blob(audioChunks, { type: 'audio/mpeg'});
                         const audioUrl = URL.createObjectURL(audioBlob);
 			sendAudio(audioBlob);
-                        audioPlayer.src = audioUrl;
-                        console.log(audioUrl);
+			//audioPlayer.src = audioUrl;
+			//console.log(audioUrl);
                         };
 
                 mediaRecorder.start();
