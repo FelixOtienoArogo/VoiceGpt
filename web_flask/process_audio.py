@@ -1,5 +1,5 @@
 from flask import jsonify, request, Flask
-from flask_cors import CORS
+# from flask_cors import CORS
 from pydub import AudioSegment
 import base64
 import os
