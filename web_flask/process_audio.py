@@ -5,6 +5,7 @@ import os
 from web_flask.stream_audio import stream_audio
 from web_flask.speech_text import speech_text
 from web_flask.text_speech import text_speech
+from web_flask.chat_completion import chat_completion
 
 def process_audio():
     """Takes in the voice message from the frontend and process it"""
@@ -24,8 +25,11 @@ def process_audio():
         search_text = speech_text(audio_path)
         print(search_text)
 
+        #Accessing chatGPT for a response
+        reply_text = chat_completion(search_text)
+
         #Convert the reply to speech
-        audioReply = text_speech(search_text)
+        audioReply = text_speech(reply_text)
 
 
         #Getting raw audio data to send back
