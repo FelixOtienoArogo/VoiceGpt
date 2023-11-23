@@ -27,6 +27,7 @@ def process_audio():
 
         #Accessing chatGPT for a response
         reply_text = chat_completion(search_text)
+        print(reply_text)
 
         #Convert the reply to speech
         audioReply = text_speech(reply_text)
