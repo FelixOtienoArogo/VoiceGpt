@@ -4,7 +4,7 @@ import os
 from io import BytesIO
 
 def stream_audio():
-    #place holder the mp3 from the text-to-speech ai
+    #getting the right file path
     SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__)) #path of this file
     UPLOADS_DIR = os.path.join(SCRIPT_DIR, 'uploads')
     mp3_file_path = os.path.join(UPLOADS_DIR, 'audio.mp3')
