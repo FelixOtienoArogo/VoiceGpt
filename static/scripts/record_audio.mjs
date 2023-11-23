@@ -28,10 +28,7 @@ navigator.mediaDevices.getUserMedia(constraints)
 
 		mediaRecorder.onstop = () => {
                         const audioBlob = new Blob(audioChunks, { type: 'audio/mpeg'});
-                        const audioUrl = URL.createObjectURL(audioBlob);
 			sendAudio(audioBlob);
-			audioPlayer.src = audioUrl;
-			console.log(audioUrl);
                         };
 
                 mediaRecorder.start();

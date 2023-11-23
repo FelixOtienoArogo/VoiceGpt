@@ -1,7 +1,6 @@
-from flask import jsonify, request, Flask, Response
+from flask import jsonify, request, Flask, Response, send_file
 from flask_cors import CORS
 from pydub import AudioSegment
-import base64
 import os
 from web_flask.stream_audio import stream_audio
 
@@ -18,8 +17,10 @@ def process_audio():
         os.makedirs(UPLOADS_DIR, exist_ok=True)
         audio_path = os.path.join(UPLOADS_DIR, 'audio.mp3')
         audio_segment.export(audio_path, format='mp3')
-        #raw_audio_data = stream_audio()
-        return jsonify({'status': 'success'})#Response(raw_audio_data, content_type='audio/mpeg')
+
+        #Getting raw audio data to send back
+        bytes_io, content_type = stream_audio()
+        return Response(bytes_io, content_type=content_type)
 
     except Exception as e:
         print(e)
