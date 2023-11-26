@@ -7,7 +7,7 @@ def chat_completion(search_text):
     model="gpt-3.5-turbo-1106",
     response_format={ "type": "json_object" },
     messages=[
-        {"role": "system", "content": "You are a helpful assistant designed to output JSON that has only one key."},
+        {"role": "system", "content": "You are a helpful assistant designed to output JSON that has only one key whose value is a string that can be used as a reply in a voice conversation."},
         {"role": "user", "content": search_text}
         ]
     )

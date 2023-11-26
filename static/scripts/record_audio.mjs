@@ -34,7 +34,7 @@ navigator.mediaDevices.getUserMedia(constraints)
                 mediaRecorder.start();
                 audioElem.disabled = true;
 
-                setTimeout(stopRecording, 10000);
+                setTimeout(stopRecording, 200000);
 		}).catch(err => {
 			errorElem.innerHTML = err;
                         errorElem.style.display = "block";
